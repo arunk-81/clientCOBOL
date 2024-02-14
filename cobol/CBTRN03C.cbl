@@ -4,6 +4,21 @@
       * Type        : BATCH COBOL Program                                
       * Function    : Print the transaction detail report.     
       ******************************************************************
+      * Copyright Amazon.com, Inc. or its affiliates.                   
+      * All Rights Reserved.                                            
+      *                                                                 
+      * Licensed under the Apache License, Version 2.0 (the "License"). 
+      * You may not use this file except in compliance with the License.
+      * You may obtain a copy of the License at                         
+      *                                                                 
+      *    http://www.apache.org/licenses/LICENSE-2.0                   
+      *                                                                 
+      * Unless required by applicable law or agreed to in writing,      
+      * software distributed under the License is distributed on an     
+      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,    
+      * either express or implied. See the License for the specific     
+      * language governing permissions and limitations under the License
+      ******************************************************************
        IDENTIFICATION DIVISION.                                                 
        PROGRAM-ID.    CBTRN03C.                                                 
        AUTHOR.        AWS.                                                      
@@ -75,169 +90,27 @@
        WORKING-STORAGE SECTION.                                                 
                                                                                 
       *****************************************************************         
-
-      *COPY CVTRA05Y.                                                           
-      *** >>> Automated Expansion of CPY: [CVTRA05Y]
-      *****************************************************************         
-      *    Data-structure for TRANsaction record (RECLN = 350)                  
-      *****************************************************************         
-       01  TRAN-RECORD.                                                         
-           05  TRAN-ID                                 PIC X(16).               
-           05  TRAN-TYPE-CD                            PIC X(02).               
-           05  TRAN-CAT-CD                             PIC 9(04).               
-           05  TRAN-SOURCE                             PIC X(10).               
-           05  TRAN-DESC                               PIC X(100).              
-           05  TRAN-AMT                                PIC S9(09)V99.           
-           05  TRAN-MERCHANT-ID                        PIC 9(09).               
-           05  TRAN-MERCHANT-NAME                      PIC X(50).               
-           05  TRAN-MERCHANT-CITY                      PIC X(50).               
-           05  TRAN-MERCHANT-ZIP                       PIC X(10).               
-           05  TRAN-CARD-NUM                           PIC X(16).               
-           05  TRAN-ORIG-TS                            PIC X(26).               
-           05  TRAN-PROC-TS                            PIC X(26).               
-           05  FILLER                                  PIC X(20).               
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:01 CDT
-      *
-
+       COPY CVTRA05Y.                                                           
        01 TRANFILE-STATUS.                                                      
           05 TRANFILE-STAT1     PIC X.                                          
           05 TRANFILE-STAT2     PIC X.                                          
                                                                                 
-
-      *COPY CVACT03Y.                                                           
-      *** >>> Automated Expansion of CPY: [CVACT03Y]
-      *****************************************************************         
-      *    Data-structure for card xref (RECLN 50)                              
-      *****************************************************************         
-       01 CARD-XREF-RECORD.                                                     
-           05  XREF-CARD-NUM                     PIC X(16).                     
-           05  XREF-CUST-ID                      PIC 9(09).                     
-           05  XREF-ACCT-ID                      PIC 9(11).                     
-           05  FILLER                            PIC X(14).                     
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
+       COPY CVACT03Y.                                                           
        01  CARDXREF-STATUS.                                                     
            05  CARDXREF-STAT1      PIC X.                                       
            05  CARDXREF-STAT2      PIC X.                                       
                                                                                 
-
-      *COPY CVTRA03Y.                                                           
-      *** >>> Automated Expansion of CPY: [CVTRA03Y]
-      *****************************************************************         
-      *    Data-structure for transaction type (RECLN = 60)                     
-      *****************************************************************         
-       01  TRAN-TYPE-RECORD.                                                    
-           05  TRAN-TYPE                               PIC X(02).               
-           05  TRAN-TYPE-DESC                          PIC X(50).               
-           05  FILLER                                  PIC X(08).               
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
+       COPY CVTRA03Y.                                                           
        01  TRANTYPE-STATUS.                                                     
            05  TRANTYPE-STAT1      PIC X.                                       
            05  TRANTYPE-STAT2      PIC X.                                       
                                                                                 
-
-      *COPY CVTRA04Y.                                                           
-      *** >>> Automated Expansion of CPY: [CVTRA04Y]
-      *****************************************************************         
-      *    Data-structure for transaction category type (RECLN = 60)            
-      *****************************************************************         
-       01  TRAN-CAT-RECORD.                                                     
-           05  TRAN-CAT-KEY.                                                    
-              10  TRAN-TYPE-CD                         PIC X(02).               
-              10  TRAN-CAT-CD                          PIC 9(04).               
-           05  TRAN-CAT-TYPE-DESC                      PIC X(50).               
-           05  FILLER                                  PIC X(04).               
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:01 CDT
-      *
-
+       COPY CVTRA04Y.                                                           
        01  TRANCATG-STATUS.                                                     
            05  TRANCATG-STAT1      PIC X.                                       
            05  TRANCATG-STAT2      PIC X.                                       
                                                                                 
-
-      *COPY CVTRA07Y.                                                           
-      *** >>> Automated Expansion of CPY: [CVTRA07Y]
-      *****************************************************************         
-      *    Reporting data structure for transaction report                      
-      *****************************************************************         
-       01  REPORT-NAME-HEADER.                                                  
-           05  REPT-SHORT-NAME                  PIC X(38) VALUE                 
-           'DALYREPT'.                                                          
-           05  REPT-LONG-NAME                   PIC X(41) VALUE                 
-           'Daily Transaction Report'.                                          
-           05  REPT-DATE-HEADER                 PIC X(12) VALUE                 
-           'Date Range: '.                                                      
-           05  REPT-START-DATE                  PIC X(10) VALUE SPACES.         
-           05  FILLER                           PIC X(04) VALUE ' to '.         
-           05  REPT-END-DATE                    PIC X(10) VALUE SPACES.         
-                                                                                
-       01  TRANSACTION-DETAIL-REPORT.                                           
-           05  TRAN-REPORT-TRANS-ID             PIC X(16).                      
-           05  FILLER                           PIC X(01) VALUE SPACES.         
-           05  TRAN-REPORT-ACCOUNT-ID           PIC X(11).                      
-           05  FILLER                           PIC X(01) VALUE SPACES.         
-           05  TRAN-REPORT-TYPE-CD              PIC X(02).                      
-           05  FILLER                           PIC X(01) VALUE '-'.            
-           05  TRAN-REPORT-TYPE-DESC            PIC X(15).                      
-           05  FILLER                           PIC X(01) VALUE SPACES.         
-           05  TRAN-REPORT-CAT-CD               PIC 9(04).                      
-           05  FILLER                           PIC X(01) VALUE '-'.            
-           05  TRAN-REPORT-CAT-DESC             PIC X(29).                      
-           05  FILLER                           PIC X(01) VALUE SPACES.         
-           05  TRAN-REPORT-SOURCE               PIC X(10).                      
-           05  FILLER                           PIC X(04) VALUE SPACES.         
-           05  TRAN-REPORT-AMT                  PIC -ZZZ,ZZZ,ZZZ.ZZ.            
-           05  FILLER                           PIC X(02) VALUE SPACES.         
-                                                                                
-       01  TRANSACTION-HEADER-1.                                                
-           05  FILLER                           PIC X(17) VALUE                 
-           'Transaction ID'.                                                    
-           05  FILLER                           PIC X(12) VALUE                 
-           'Account ID'.                                                        
-           05  FILLER                           PIC X(19) VALUE                 
-           'Transaction Type'.                                                  
-           05  FILLER                           PIC X(35) VALUE                 
-           'Tran Category'.                                                     
-           05  FILLER                           PIC X(14) VALUE                 
-           'Tran Source'.                                                       
-           05  FILLER                           PIC X VALUE SPACES.             
-           05  FILLER                           PIC X(16) VALUE                 
-           '        Amount'.                                                    
-                                                                                
-       01  TRANSACTION-HEADER-2  PIC X(133) VALUE ALL '-'.                      
-                                                                                
-       01  REPORT-PAGE-TOTALS.                                                  
-           05  FILLER                           PIC X(11) VALUE                 
-           'Page Total'.                                                        
-           05  FILLER                           PIC X(86) VALUE ALL '.'.        
-           05  REPT-PAGE-TOTAL                  PIC +ZZZ,ZZZ,ZZZ.ZZ.            
-                                                                                
-       01  REPORT-ACCOUNT-TOTALS.                                               
-           05  FILLER                           PIC X(13) VALUE                 
-           'Account Total'.                                                     
-           05  FILLER                           PIC X(84) VALUE ALL '.'.        
-           05  REPT-ACCOUNT-TOTAL               PIC +ZZZ,ZZZ,ZZZ.ZZ.            
-                                                                                
-       01  REPORT-GRAND-TOTALS.                                                 
-           05  FILLER                           PIC X(11) VALUE                 
-           'Grand Total'.                                                       
-           05  FILLER                           PIC X(86) VALUE ALL '.'.        
-           05  REPT-GRAND-TOTAL                 PIC +ZZZ,ZZZ,ZZZ.ZZ.            
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:01 CDT
-      *
-
+       COPY CVTRA07Y.                                                           
        01 TRANREPT-STATUS.                                                      
            05 REPTFILE-STAT1     PIC X.                                         
            05 REPTFILE-STAT2     PIC X.                                         

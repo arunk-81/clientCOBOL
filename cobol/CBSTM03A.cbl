@@ -48,120 +48,13 @@
 
        WORKING-STORAGE SECTION.
 
+       COPY COSTM01.
 
-      *COPY COSTM01.
-      *** >>> Automated Expansion of CPY: [COSTM01]
-      ******************************************************************
-      * CardDemo - Transaction altered Layout for use in reporting
-      ******************************************************************
-      * Copyright Amazon.com, Inc. or its affiliates.
-      * All Rights Reserved.
-      *
-      * Licensed under the Apache License, Version 2.0 (the "License").
-      * You may not use this file except in compliance with the License.
-      * You may obtain a copy of the License at
-      *
-      *    http://www.apache.org/licenses/LICENSE-2.0
-      *
-      * Unless required by applicable law or agreed to in writing,
-      * software distributed under the License is distributed on an
-      * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,
-      * either express or implied. See the License for the specific
-      * language governing permissions and limitations under the License
-      ******************************************************************
-      *
-       01  TRNX-RECORD.
-           05  TRNX-KEY.
-               10  TRNX-CARD-NUM                       PIC X(16).
-               10  TRNX-ID                             PIC X(16).
-           05  TRNX-REST.
-               10  TRNX-TYPE-CD                        PIC X(02).
-               10  TRNX-CAT-CD                         PIC 9(04).
-               10  TRNX-SOURCE                         PIC X(10).
-               10  TRNX-DESC                           PIC X(100).
-               10  TRNX-AMT                            PIC S9(09)V99.
-               10  TRNX-MERCHANT-ID                    PIC 9(09).
-               10  TRNX-MERCHANT-NAME                  PIC X(50).
-               10  TRNX-MERCHANT-CITY                  PIC X(50).
-               10  TRNX-MERCHANT-ZIP                   PIC X(10).
-               10  TRNX-ORIG-TS                        PIC X(26).
-               10  TRNX-PROC-TS                        PIC X(26).
-               10  FILLER                              PIC X(20).
+       COPY CVACT03Y.
 
+       COPY CUSTREC.
 
-
-
-
-      *COPY CVACT03Y.
-      *** >>> Automated Expansion of CPY: [CVACT03Y]
-      *****************************************************************         
-      *    Data-structure for card xref (RECLN 50)                              
-      *****************************************************************         
-       01 CARD-XREF-RECORD.                                                     
-           05  XREF-CARD-NUM                     PIC X(16).                     
-           05  XREF-CUST-ID                      PIC 9(09).                     
-           05  XREF-ACCT-ID                      PIC 9(11).                     
-           05  FILLER                            PIC X(14).                     
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
-
-
-      *COPY CUSTREC.
-      *** >>> Automated Expansion of CPY: [CUSTREC]
-      *****************************************************************
-      *    Data-structure for Customer entity (RECLN 500)
-      *****************************************************************
-       01  CUSTOMER-RECORD.
-           05  CUST-ID                                 PIC 9(09).
-		     05  CUST-FIRST-NAME                         PIC X(25).
-		     05  CUST-MIDDLE-NAME                        PIC X(25).
-		     05  CUST-LAST-NAME                          PIC X(25).
-		     05  CUST-ADDR-LINE-1                        PIC X(50).
-		     05  CUST-ADDR-LINE-2                        PIC X(50).
-		     05  CUST-ADDR-LINE-3                        PIC X(50).		   
-		     05  CUST-ADDR-STATE-CD                      PIC X(02).
-		     05  CUST-ADDR-COUNTRY-CD                    PIC X(03).
-		     05  CUST-ADDR-ZIP                           PIC X(10).
-		     05  CUST-PHONE-NUM-1                        PIC X(15).
-		     05  CUST-PHONE-NUM-2                        PIC X(15).
-		     05  CUST-SSN                                PIC 9(09).
-		     05  CUST-GOVT-ISSUED-ID                     PIC X(20).
-		     05  CUST-DOB-YYYYMMDD                       PIC X(10).
-		     05  CUST-EFT-ACCOUNT-ID                     PIC X(10).
-		     05  CUST-PRI-CARD-HOLDER-IND                PIC X(01).
-		     05  CUST-FICO-CREDIT-SCORE                  PIC 9(03).
-             05  FILLER                                  PIC X(168).      
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:59 CDT
-      *
-
-
-
-      *COPY CVACT01Y.
-      *** >>> Automated Expansion of CPY: [CVACT01Y]
-      *****************************************************************
-      *    Data-structure for  account entity (RECLN 300)
-      *****************************************************************
-       01  ACCOUNT-RECORD.
-           05  ACCT-ID                           PIC 9(11).
-           05  ACCT-ACTIVE-STATUS                PIC X(01).
-           05  ACCT-CURR-BAL                     PIC S9(10)V99.
-           05  ACCT-CREDIT-LIMIT                 PIC S9(10)V99.
-           05  ACCT-CASH-CREDIT-LIMIT            PIC S9(10)V99.
-           05  ACCT-OPEN-DATE                    PIC X(10).
-           05  ACCT-EXPIRAION-DATE               PIC X(10). 
-           05  ACCT-REISSUE-DATE                 PIC X(10).
-           05  ACCT-CURR-CYC-CREDIT              PIC S9(10)V99.
-           05  ACCT-CURR-CYC-DEBIT               PIC S9(10)V99.
-           05  ACCT-ADDR-ZIP                     PIC X(10).
-           05  ACCT-GROUP-ID                     PIC X(10).
-           05  FILLER                            PIC X(178).      
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:59 CDT
-      *
-
+       COPY CVACT01Y.
 
        01  COMP-VARIABLES          COMP.
            05  CR-CNT              PIC S9(4) VALUE 0.

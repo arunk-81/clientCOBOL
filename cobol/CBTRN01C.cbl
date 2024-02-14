@@ -96,163 +96,32 @@
        WORKING-STORAGE SECTION.
 
       *****************************************************************
-
-      *COPY CVTRA06Y.
-      *** >>> Automated Expansion of CPY: [CVTRA06Y]
-      *****************************************************************         
-      *    Data-structure for DALYTRANsaction record (RECLN = 350)              
-      *****************************************************************         
-       01  DALYTRAN-RECORD.                                                     
-           05  DALYTRAN-ID                             PIC X(16).               
-           05  DALYTRAN-TYPE-CD                        PIC X(02).               
-           05  DALYTRAN-CAT-CD                         PIC 9(04).               
-           05  DALYTRAN-SOURCE                         PIC X(10).               
-           05  DALYTRAN-DESC                           PIC X(100).              
-           05  DALYTRAN-AMT                            PIC S9(09)V99.           
-           05  DALYTRAN-MERCHANT-ID                    PIC 9(09).               
-           05  DALYTRAN-MERCHANT-NAME                  PIC X(50).               
-           05  DALYTRAN-MERCHANT-CITY                  PIC X(50).               
-           05  DALYTRAN-MERCHANT-ZIP                   PIC X(10).               
-           05  DALYTRAN-CARD-NUM                       PIC X(16).               
-           05  DALYTRAN-ORIG-TS                        PIC X(26).               
-           05  DALYTRAN-PROC-TS                        PIC X(26).               
-           05  FILLER                                  PIC X(20).       
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:01 CDT
-      *
-
+       COPY CVTRA06Y.
        01  DALYTRAN-STATUS.
            05  DALYTRAN-STAT1      PIC X.
            05  DALYTRAN-STAT2      PIC X.
 
-
-      *COPY CVCUS01Y.
-      *** >>> Automated Expansion of CPY: [CVCUS01Y]
-      *****************************************************************
-      *    Data-structure for Customer entity (RECLN 500)
-      *****************************************************************
-       01  CUSTOMER-RECORD.
-           05  CUST-ID                                 PIC 9(09).
-           05  CUST-FIRST-NAME                         PIC X(25).
-           05  CUST-MIDDLE-NAME                        PIC X(25).
-           05  CUST-LAST-NAME                          PIC X(25).
-           05  CUST-ADDR-LINE-1                        PIC X(50).
-           05  CUST-ADDR-LINE-2                        PIC X(50).
-           05  CUST-ADDR-LINE-3                        PIC X(50).         
-           05  CUST-ADDR-STATE-CD                      PIC X(02).
-           05  CUST-ADDR-COUNTRY-CD                    PIC X(03).
-           05  CUST-ADDR-ZIP                           PIC X(10).
-           05  CUST-PHONE-NUM-1                        PIC X(15).
-           05  CUST-PHONE-NUM-2                        PIC X(15).
-           05  CUST-SSN                                PIC 9(09).
-           05  CUST-GOVT-ISSUED-ID                     PIC X(20).
-           05  CUST-DOB-YYYY-MM-DD                     PIC X(10).
-           05  CUST-EFT-ACCOUNT-ID                     PIC X(10).
-           05  CUST-PRI-CARD-HOLDER-IND                PIC X(01).
-           05  CUST-FICO-CREDIT-SCORE                  PIC 9(03).
-           05  FILLER                                  PIC X(168).      
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
+       COPY CVCUS01Y.
        01  CUSTFILE-STATUS.
            05  CUSTFILE-STAT1      PIC X.
            05  CUSTFILE-STAT2      PIC X.
 
-
-      *COPY CVACT03Y.
-      *** >>> Automated Expansion of CPY: [CVACT03Y]
-      *****************************************************************         
-      *    Data-structure for card xref (RECLN 50)                              
-      *****************************************************************         
-       01 CARD-XREF-RECORD.                                                     
-           05  XREF-CARD-NUM                     PIC X(16).                     
-           05  XREF-CUST-ID                      PIC 9(09).                     
-           05  XREF-ACCT-ID                      PIC 9(11).                     
-           05  FILLER                            PIC X(14).                     
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
+       COPY CVACT03Y.
        01  XREFFILE-STATUS.
            05  XREFFILE-STAT1      PIC X.
            05  XREFFILE-STAT2      PIC X.
 
-
-      *COPY CVACT02Y.
-      *** >>> Automated Expansion of CPY: [CVACT02Y]
-      *****************************************************************
-      *    Data-structure for card entity (RECLN 150)
-      *****************************************************************
-       01  CARD-RECORD.
-           05  CARD-NUM                          PIC X(16).
-           05  CARD-ACCT-ID                      PIC 9(11).
-           05  CARD-CVV-CD                       PIC 9(03).
-           05  CARD-EMBOSSED-NAME                PIC X(50).
-           05  CARD-EXPIRAION-DATE               PIC X(10).
-           05  CARD-ACTIVE-STATUS                PIC X(01).
-           05  FILLER                            PIC X(59).
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:00 CDT
-      *
-
+       COPY CVACT02Y.
        01  CARDFILE-STATUS.
            05  CARDFILE-STAT1      PIC X.
            05  CARDFILE-STAT2      PIC X.
 
-
-      *COPY CVACT01Y.
-      *** >>> Automated Expansion of CPY: [CVACT01Y]
-      *****************************************************************
-      *    Data-structure for  account entity (RECLN 300)
-      *****************************************************************
-       01  ACCOUNT-RECORD.
-           05  ACCT-ID                           PIC 9(11).
-           05  ACCT-ACTIVE-STATUS                PIC X(01).
-           05  ACCT-CURR-BAL                     PIC S9(10)V99.
-           05  ACCT-CREDIT-LIMIT                 PIC S9(10)V99.
-           05  ACCT-CASH-CREDIT-LIMIT            PIC S9(10)V99.
-           05  ACCT-OPEN-DATE                    PIC X(10).
-           05  ACCT-EXPIRAION-DATE               PIC X(10). 
-           05  ACCT-REISSUE-DATE                 PIC X(10).
-           05  ACCT-CURR-CYC-CREDIT              PIC S9(10)V99.
-           05  ACCT-CURR-CYC-DEBIT               PIC S9(10)V99.
-           05  ACCT-ADDR-ZIP                     PIC X(10).
-           05  ACCT-GROUP-ID                     PIC X(10).
-           05  FILLER                            PIC X(178).      
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:15:59 CDT
-      *
-
+       COPY CVACT01Y.
        01  ACCTFILE-STATUS.
            05  ACCTFILE-STAT1      PIC X.
            05  ACCTFILE-STAT2      PIC X.
 
-
-      *COPY CVTRA05Y.
-      *** >>> Automated Expansion of CPY: [CVTRA05Y]
-      *****************************************************************         
-      *    Data-structure for TRANsaction record (RECLN = 350)                  
-      *****************************************************************         
-       01  TRAN-RECORD.                                                         
-           05  TRAN-ID                                 PIC X(16).               
-           05  TRAN-TYPE-CD                            PIC X(02).               
-           05  TRAN-CAT-CD                             PIC 9(04).               
-           05  TRAN-SOURCE                             PIC X(10).               
-           05  TRAN-DESC                               PIC X(100).              
-           05  TRAN-AMT                                PIC S9(09)V99.           
-           05  TRAN-MERCHANT-ID                        PIC 9(09).               
-           05  TRAN-MERCHANT-NAME                      PIC X(50).               
-           05  TRAN-MERCHANT-CITY                      PIC X(50).               
-           05  TRAN-MERCHANT-ZIP                       PIC X(10).               
-           05  TRAN-CARD-NUM                           PIC X(16).               
-           05  TRAN-ORIG-TS                            PIC X(26).               
-           05  TRAN-PROC-TS                            PIC X(26).               
-           05  FILLER                                  PIC X(20).               
-      *
-      * Ver: CardDemo_v1.0-15-g27d6c6f-68 Date: 2022-07-19 23:16:01 CDT
-      *
-
+       COPY CVTRA05Y.
        01  TRANFILE-STATUS.
            05  TRANFILE-STAT1      PIC X.
            05  TRANFILE-STAT2      PIC X.
